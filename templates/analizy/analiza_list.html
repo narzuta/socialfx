@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<ul class="nav">
+  <li class="nav-item">
+    <a class="nav-link active color-1" href="#"><i class="fas fa-pencil-alt"></i> Nowa analiza</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link color-1" href="#"><i class="fas fa-book"></i> Moje analizy</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link color-1" href="#"><i class="fas fa-heart"></i> Ulubione analizy</a>
+  </li>
+</ul>
+    <section class="blog-background pt-5 pb-5">
+        <div class="container">
+            {% for analiza in analizy %}
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-2 col-xs-12 text-center">
+                                <img src="https://via.placeholder.com/150x150" class="rounded-circle" alt="Avatar">
+                                <p class="pt-2 text-muted text-center">{{ analiza.author }}</p>
+                            </div>
+                            <div class="col-lg-10 col-xs-12">
+                                <div class="d-inline">
+                                    <h5 class="font-weight-bold"><a href="{% url 'analiza_detail' pk=analiza.pk %}">{{ analiza.title }}</a></h5>
+                                </div>
+                                <div class="d-inline p-2 bg-dark text-white float-right">
+                                    {{ analiza.direction }}
+                                </div>
+                                <h5 class="">{{ analiza.instrument }}</a></h5>
+                                <span class="text-muted font-weight-light font-italic"><small>Data publikacji: {{ analiza.created_date }}</small></span>
+                                <p class="text-muted font-weight-light font-italic"><small>Data ostatniej modyfikacji: {{ analiza.published_date }}</small></p>
+                                <img src="https://tradingdot.com/photos/attachments/2e684509003d4cbabf037bd31af54cb3/AUDJPY.jpg" class="img-fluid">
+                                <p class="">{{ analiza.text|linebreaksbr }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

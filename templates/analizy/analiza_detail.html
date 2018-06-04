@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+        {% if analiza.published_date %}
+           {{ analiza.published_date }}
+        {% endif %}
+        <h1>{{ analiza.title }}</h1>
+        <p>{{ analiza.text|linebreaksbr }}</p>
+{% endblock %}

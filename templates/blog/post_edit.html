@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% if user.is_authenticated %}
+<ul class="nav">
+  <li class="nav-item">
+    <a class="nav-link color-1" href="{% url 'post_new' %}"><i class="fas fa-pencil-alt"></i> Nowy wpis</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link color-1" href="#"><i class="fas fa-book"></i> Moje wpisy</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link color-1" href="#"><i class="fas fa-heart"></i> Ulubione wpisy</a>
+  </li>
+</ul>
+{% endif %}
+    <section class="blog-background pt-5 pb-5">
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <form method="POST" class="post-form">{% csrf_token %}
+                        <div class="form-row">
+                          <div class="form-group col-6">
+                              <label for="exampleFormControlInput1">Tytuł wpisu</label>
+                              <input id="title" type="text" class="form-control" name="title" placeholder="Analiza techniczna działa..." value="{{ post.title }}">
+                          </div>
+                          <div class="form-group col-6">
+                              <label for="inputState">Kategoria</label>
+                              <select id="inputState" class="form-control">
+                                <option selected>Wybierz kategorię wpisu...</option>
+                                <option>Analiza techniczna</option>
+                                <option>Surowce</option>
+                                <option>Edukacja</option>
+                                <option>Kryptowaluty</option>
+                                <option>Inne</option>
+                              </select>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Treść wpisu</label>
+                            <textarea class="form-control" id="text" name="text" value="{{ post.text }} rows="3"></textarea>
+                        </div>
+                      <button type="submit" class="save btn btn-primary">Dodaj wpis</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

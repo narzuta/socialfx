@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <section class="blog-background pt-5 pb-5">
+        <div class="container">
+            {% for broker in brokers %}
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-2 col-xs-12 text-center">
+                                <img src="https://via.placeholder.com/150x150" class="rounded-circle" alt="Avatar">
+                                <p class="pt-2 text-muted text-center">{{ broker.author }}</p>
+                                <span class="">Liczba wpisów: 121</span>
+                            </div>
+                            <div class="col-lg-10 col-xs-12">
+                                <h5 class="font-weight-bold"><a href="{% url 'broker_detail' pk=broker.pk %}">{{ broker.broker_name }}</a></h5>
+                                <span class="text-muted font-weight-light font-italic"><small>Data publikacji: {{ broker.created_date }}</small></span>
+                                <p class="text-muted font-weight-light font-italic"><small>Data ostatniej modyfikacji: {{ broker.published_date }}</small></p>
+                                <p class="">{{ broker.text|linebreaksbr }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

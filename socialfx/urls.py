@@ -21,4 +21,5 @@ urlpatterns = [
     path('', include('home.urls')),
     path('', include('blog.urls')),
     path('', include('analizy.urls')),
+    path('', include('brokers.urls')),
 ]

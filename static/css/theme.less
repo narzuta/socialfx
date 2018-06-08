@@ -1,9 +1,13 @@
 @PINK-RASPBERRY: #0275d8;
 @DARK-GUNMETAL: #242529;
 @ISABELLINE:#EAEAEA;
+@dark: #2b2d42;
 
 .color-1 {
   color: #242529;
+}
+.color-2 {
+  color: @ISABELLINE;
 }
 
 body {
@@ -30,21 +34,6 @@ font-family: 'Ubuntu', sans-serif;
 }
 .blog-background {
 background: #e4e5e6;  /* fallback for old browsers */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 a {
   color: @PINK-RASPBERRY;
@@ -52,4 +41,10 @@ a {
     text-decoration: none;
     color: lighten(@PINK-RASPBERRY, 5%);
   }
+}
+.bg-footer {
+  background-color: #2b2d42;
+}
+.dark-bg-footer {
+  background-color: lighten(@dark, 5%);
 }
